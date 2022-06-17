@@ -27,6 +27,13 @@ if api_key is not None and dispositivos is not None:
                         psi_dict['url']=data["lighthouseResult"]["finalUrl"]
                         psi_dict['dispositivo']=dispo
                         psi_dict['score'] = data["lighthouseResult"]["categories"]["performance"]["score"]
+                        if 'origin_fallback' in data["loadingExperience"]:
+                            if data["loadingExperience"]['origin_fallback']==True:
+                                psi_dict['datos_origen']='Sí'
+                            else:
+                                psi_dict['datos_origen']='No'
+                        else:
+                            psi_dict['datos_origen']='No'
                         psi_dict['fcp_chrux (ms)'] =data["loadingExperience"]["metrics"]["FIRST_CONTENTFUL_PAINT_MS"]["percentile"] #into seconds (/1000)
                         psi_dict['fcp_chrux_score'] = data["loadingExperience"]["metrics"]["FIRST_CONTENTFUL_PAINT_MS"]["category"]
                         if  data["loadingExperience"]["metrics"].get("FIRST_INPUT_DELAY_MS") != None:
