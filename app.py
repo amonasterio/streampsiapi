@@ -1,4 +1,4 @@
-import streamlit as st, pandas as pd,json,time, urllib
+import streamlit as st, pandas as pd,json,time, urllib.request
 from urllib.error import HTTPError
 st.title("Consulta masiva a PSI")
 
